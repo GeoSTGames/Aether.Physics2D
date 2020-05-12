@@ -17,7 +17,7 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>..\bin\Debug\Portable45\</OutputPath>
-    <DefineConstants>DEBUG;LEGACY_FLUIDS;LEGACY_ASYNCADDREMOVE;XNAAPI;PORTABLE45</DefineConstants>
+    <DefineConstants>DEBUG;PORTABLE45</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
@@ -29,7 +29,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
-    <DefineConstants>LEGACY_FLUIDS;LEGACY_ASYNCADDREMOVE;XNAAPI;PORTABLE45</DefineConstants>
+    <DefineConstants>PORTABLE45</DefineConstants>
   </PropertyGroup>
 
   <ItemGroup>
@@ -93,10 +93,10 @@
     <Compile Include="Common\FixedArray.cs" />
     <Compile Include="Common\LineTools.cs" />
     <Compile Include="Common\Math.cs" />
-    <Compile Include="Common\Complex.cs" />
-    <Compile Include="Common\Constant.cs" />
+    <Compile Include="Common\Maths\Constant.cs" />
     <Compile Include="Common\Path.cs" />
     <Compile Include="Common\PathManager.cs" />
+    <Compile Include="Common\Maths\Complex.cs" />
     <Compile Include="Common\PhysicsLogic\BreakableBody.cs" />
     <Compile Include="Common\PhysicsLogic\ControllerFilter.cs" />
     <Compile Include="Common\PhysicsLogic\FilterData.cs" />

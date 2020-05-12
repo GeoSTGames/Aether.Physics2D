@@ -13,9 +13,7 @@ using System.Xml.Serialization;
 using tainicom.Aether.Physics2D.Collision.Shapes;
 using tainicom.Aether.Physics2D.Dynamics;
 using tainicom.Aether.Physics2D.Dynamics.Joints;
-#if XNAAPI
-using Vector2 = Microsoft.Xna.Framework.Vector2;
-#endif
+using Microsoft.Xna.Framework;
 
 namespace tainicom.Aether.Physics2D.Common
 {
@@ -1101,9 +1099,7 @@ namespace tainicom.Aether.Physics2D.Common
                 }
             }
 
-#if LEGACY_ASYNCADDREMOVE
             world.ProcessChanges();
-#endif
         }
 
         private static Vector2 ReadVector(XMLFragmentElement node)

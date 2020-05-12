@@ -23,7 +23,7 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>..\bin\Debug\W8_1\</OutputPath>
-    <DefineConstants>TRACE;DEBUG;LEGACY_FLUIDS;LEGACY_ASYNCADDREMOVE;XNAAPI;NETFX_CORE;W8_1</DefineConstants>
+    <DefineConstants>TRACE;DEBUG;NETFX_CORE;W8_1</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
@@ -32,7 +32,7 @@
     <DebugType>none</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>..\bin\Release\W8_1\</OutputPath>
-    <DefineConstants>TRACE;LEGACY_FLUIDS;LEGACY_ASYNCADDREMOVE;XNAAPI;NETFX_CORE;W8_1</DefineConstants>
+    <DefineConstants>TRACE;NETFX_CORE;W8_1</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
@@ -99,10 +99,10 @@
     <Compile Include="Common\FixedArray.cs" />
     <Compile Include="Common\LineTools.cs" />
     <Compile Include="Common\Math.cs" />
-    <Compile Include="Common\Complex.cs" />
-    <Compile Include="Common\Constant.cs" />
+    <Compile Include="Common\Maths\Constant.cs" />
     <Compile Include="Common\Path.cs" />
     <Compile Include="Common\PathManager.cs" />
+    <Compile Include="Common\Maths\Complex.cs" />
     <Compile Include="Common\PhysicsLogic\BreakableBody.cs" />
     <Compile Include="Common\PhysicsLogic\ControllerFilter.cs" />
     <Compile Include="Common\PhysicsLogic\FilterData.cs" />

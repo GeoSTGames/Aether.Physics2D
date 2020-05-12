@@ -13,10 +13,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Text;
 using tainicom.Aether.Physics2D.Collision;
-#if XNAAPI
-using Vector2 = Microsoft.Xna.Framework.Vector2;
-using Matrix = Microsoft.Xna.Framework.Matrix;
-#endif
+using Microsoft.Xna.Framework;
 
 namespace tainicom.Aether.Physics2D.Common
 {
@@ -548,7 +545,6 @@ namespace tainicom.Aether.Physics2D.Common
             return true;
         }
 
-#if XNAAPI
         /// <summary>
         /// Transforms the polygon using the defined matrix.
         /// </summary>
@@ -571,7 +567,6 @@ namespace tainicom.Aether.Physics2D.Common
                 }
             }
         }
-#endif
 
         public override string ToString()
         {

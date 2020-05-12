@@ -20,7 +20,7 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>..\bin\Debug\Android\</OutputPath>
-    <DefineConstants>DEBUG;LEGACY_FLUIDS;LEGACY_ASYNCADDREMOVE;XNAAPI;ANDROID PORTABLE</DefineConstants>
+    <DefineConstants>DEBUG;ANDROID PORTABLE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
@@ -30,7 +30,7 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <Optimize>true</Optimize>
     <OutputPath>..\bin\Release\Android\</OutputPath>
-    <DefineConstants>LEGACY_FLUIDS;LEGACY_ASYNCADDREMOVE;XNAAPI;ANDROID</DefineConstants>
+    <DefineConstants>ANDROID</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
@@ -99,10 +99,10 @@
     <Compile Include="Common\FixedArray.cs" />
     <Compile Include="Common\LineTools.cs" />
     <Compile Include="Common\Math.cs" />
-    <Compile Include="Common\Complex.cs" />
-    <Compile Include="Common\Constant.cs" />
+    <Compile Include="Common\Maths\Constant.cs" />
     <Compile Include="Common\Path.cs" />
     <Compile Include="Common\PathManager.cs" />
+    <Compile Include="Common\Maths\Complex.cs" />
     <Compile Include="Common\PhysicsLogic\BreakableBody.cs" />
     <Compile Include="Common\PhysicsLogic\ControllerFilter.cs" />
     <Compile Include="Common\PhysicsLogic\FilterData.cs" />

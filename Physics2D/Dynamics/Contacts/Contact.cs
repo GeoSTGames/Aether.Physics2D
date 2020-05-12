@@ -29,12 +29,14 @@
 
 using System.Collections.Generic;
 using System.Diagnostics;
+using DeeZ.Engine.Common;
+using DeeZ.Engine.Components;
+using DeeZ.Engine.Physics;
 using tainicom.Aether.Physics2D.Collision;
 using tainicom.Aether.Physics2D.Collision.Shapes;
 using tainicom.Aether.Physics2D.Common;
-#if XNAAPI
-using Vector2 = Microsoft.Xna.Framework.Vector2;
-#endif
+using Microsoft.Xna.Framework;
+using Transform = tainicom.Aether.Physics2D.Common.Transform;
 
 namespace tainicom.Aether.Physics2D.Dynamics.Contacts
 {
@@ -118,6 +120,8 @@ namespace tainicom.Aether.Physics2D.Dynamics.Contacts
 
         public Fixture FixtureA { get; internal set; }
         public Fixture FixtureB { get; internal set; }
+
+        public DeeZ.Engine.Physics.Contact DeeZContact { get; set; }
 
         public float Friction { get; set; }
         public float Restitution { get; set; }
@@ -442,7 +446,7 @@ namespace tainicom.Aether.Physics2D.Dynamics.Contacts
             Contact c = null;
             var contactPoolList = contactManager._contactPoolList;
             if (contactPoolList.Next != contactPoolList)
-            {
+            {                
                 // get first item in the pool.
                 c = contactPoolList.Next;
                 // Remove from the pool.

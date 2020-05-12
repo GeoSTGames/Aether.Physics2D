@@ -6,10 +6,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-#if XNAAPI
-using Vector2 = Microsoft.Xna.Framework.Vector2;
-using Vector3 = Microsoft.Xna.Framework.Vector3;
-#endif
+using Microsoft.Xna.Framework;
 
 namespace tainicom.Aether.Physics2D.Common
 {
@@ -126,10 +123,10 @@ namespace tainicom.Aether.Physics2D.Common
         /// <param name="value">The amount to rotate by in radians.</param>
         public void Rotate(float value)
         {
-            var rotation = Complex.FromAngle(value);
+            var rotation = Maths.Complex.FromAngle(value);
 
             for (int i = 0; i < ControlPoints.Count; i++)
-                ControlPoints[i] = Complex.Multiply(ControlPoints[i], ref rotation);
+                ControlPoints[i] = Maths.Complex.Multiply(ControlPoints[i], ref rotation);
         }
 
         public override string ToString()

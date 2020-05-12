@@ -1,0 +1,52 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <EnableDefaultItems>false</EnableDefaultItems>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <AssemblyName>Aether.Physics2D.Diagnostics.NETSTANDARD.MG</AssemblyName>
+    <RootNamespace>Aether.Physics2D.Diagnostics.NETSTANDARD.MG</RootNamespace>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <DefineConstants>DEBUG;TRACE;NETSTANDARD;NETSTANDARD2_0</DefineConstants>
+    <OutputPath>..\..\bin\Debug\netcore\</OutputPath>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <DefineConstants>TRACE;NETSTANDARD;NETSTANDARD2_0</DefineConstants>
+    <OutputPath>..\..\bin\Release\netcore\</OutputPath>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="DebugView.cs" />
+    <Compile Include="DebugViewBase.cs" />
+    <Compile Include="DebugViewFlags.cs" />
+    <Compile Include="Extensions.cs" />
+    <Compile Include="IPrimitiveBatch.cs" />
+    <Compile Include="PrimitiveBatch.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.NETSTANDARD.MG.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Content\DiagnosticsFont.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Aether.Physics2D.NETSTANDARD.MG">
+      <HintPath>..\..\bin\Release\netstandard2.1\Aether.Physics2D.NETSTANDARD.MG.dll</HintPath>
+    </Reference>
+    <Reference Include="MonoGame.Framework">
+      <HintPath>..\..\..\MonoGame\MonoGame.Framework\bin\DesktopGL\Release\netstandard2.1\MonoGame.Framework.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>

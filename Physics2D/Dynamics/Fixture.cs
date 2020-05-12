@@ -30,13 +30,14 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using DeeZ.Engine.Common;
+using DeeZ.Engine.Components;
+using DeeZ.Engine.Physics;
 using tainicom.Aether.Physics2D.Collision;
 using tainicom.Aether.Physics2D.Collision.Shapes;
-using tainicom.Aether.Physics2D.Common;
 using tainicom.Aether.Physics2D.Dynamics.Contacts;
-#if XNAAPI
-using Vector2 = Microsoft.Xna.Framework.Vector2;
-#endif
+using Microsoft.Xna.Framework;
+using Transform = tainicom.Aether.Physics2D.Common.Transform;
 
 namespace tainicom.Aether.Physics2D.Dynamics
 {
@@ -59,6 +60,8 @@ namespace tainicom.Aether.Physics2D.Dynamics
 
         public FixtureProxy[] Proxies { get; private set; }
         public int ProxyCount { get; private set; }
+
+        public DeeZ.Engine.Physics.Fixture DeeZFixture { get; set; }
 
         /// <summary>
         /// Fires after two shapes has collided and are solved. This gives you a chance to get the impact force.
@@ -191,6 +194,12 @@ namespace tainicom.Aether.Physics2D.Dynamics
         /// <value>The body.</value>
         public Body Body { get; internal set; }
 
+        public GameObject GameObject => Body.PhysicsBody?.PhysicsObject?.Owner;
+
+        public PhysicsObject PhysicsObject => Body.PhysicsBody?.PhysicsObject;
+
+        public PhysicsBody PhysicsBody => Body.PhysicsBody;
+
         /// <summary>
         /// Set the user data. Use this to store your application specific data.
         /// </summary>
@@ -239,7 +248,7 @@ namespace tainicom.Aether.Physics2D.Dynamics
             ContactEdge edge = Body.ContactList;
             while (edge != null)
             {
-                Contact contact = edge.Contact;
+                Contacts.Contact contact = edge.Contact;
                 Fixture fixtureA = contact.FixtureA;
                 Fixture fixtureB = contact.FixtureB;
                 if (fixtureA == this || fixtureB == this)
@@ -287,7 +296,7 @@ namespace tainicom.Aether.Physics2D.Dynamics
         /// <param name="input">The ray-cast input parameters.</param>
         /// <param name="childIndex">Index of the child.</param>
         /// <returns></returns>
-        public bool RayCast(out RayCastOutput output, ref RayCastInput input, int childIndex)
+        public bool RayCast(out Collision.RayCastOutput output, ref Collision.RayCastInput input, int childIndex)
         {
             return Shape.RayCast(out output, ref input, ref Body._xf, childIndex);
         }
@@ -299,7 +308,7 @@ namespace tainicom.Aether.Physics2D.Dynamics
         /// </summary>
         /// <param name="aabb">The aabb.</param>
         /// <param name="childIndex">Index of the child.</param>
-        public void GetAABB(out AABB aabb, int childIndex)
+        public void GetAABB(out Collision.AABB aabb, int childIndex)
         {
             Debug.Assert(0 <= childIndex && childIndex < ProxyCount);
             aabb = Proxies[childIndex].AABB;
@@ -346,7 +355,7 @@ namespace tainicom.Aether.Physics2D.Dynamics
                 FixtureProxy proxy = Proxies[i];
 
                 // Compute an AABB that covers the swept Shape (may miss some rotation effect).
-                AABB aabb1, aabb2;
+                Collision.AABB aabb1, aabb2;
                 Shape.ComputeAABB(out aabb1, ref transform1, proxy.ChildIndex);
                 Shape.ComputeAABB(out aabb2, ref transform2, proxy.ChildIndex);
 

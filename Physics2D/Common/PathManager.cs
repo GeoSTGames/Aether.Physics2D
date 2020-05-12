@@ -5,14 +5,14 @@
 
 using System;
 using System.Collections.Generic;
+using DeeZ.Engine.Components;
+using DeeZ.Engine.Physics;
 using tainicom.Aether.Physics2D.Collision.Shapes;
 using tainicom.Aether.Physics2D.Common.Decomposition;
 using tainicom.Aether.Physics2D.Dynamics;
 using tainicom.Aether.Physics2D.Dynamics.Joints;
-#if XNAAPI
-using Vector2 = Microsoft.Xna.Framework.Vector2;
-using Vector3 = Microsoft.Xna.Framework.Vector3;
-#endif
+using Microsoft.Xna.Framework;
+using BodyType = tainicom.Aether.Physics2D.Dynamics.BodyType;
 
 namespace tainicom.Aether.Physics2D.Common
 {
@@ -91,14 +91,14 @@ namespace tainicom.Aether.Physics2D.Common
         /// <param name="copies">The copies.</param>
         /// <param name="userData"></param>
         /// <returns></returns>
-        public static List<Body> EvenlyDistributeShapesAlongPath(World world, Path path, IEnumerable<Shape> shapes, BodyType type, int copies, object userData = null)
+        public static List<Body> EvenlyDistributeShapesAlongPath(World world, Path path, IEnumerable<Shape> shapes, BodyType type, int copies, object userData = null, PhysicsBody physicsBody = null)
         {
             List<Vector3> centers = path.SubdivideEvenly(copies);
             List<Body> bodyList = new List<Body>();
 
             for (int i = 0; i < centers.Count; i++)
             {
-                Body b = world.CreateBody();
+                Body b = world.CreateBody(physicsBody: physicsBody);
 
                 // copy the type from original body
                 b.BodyType = type;
@@ -128,12 +128,12 @@ namespace tainicom.Aether.Physics2D.Common
         /// <param name="copies">The copies.</param>
         /// <param name="userData">The user data.</param>
         /// <returns></returns>
-        public static List<Body> EvenlyDistributeShapesAlongPath(World world, Path path, Shape shape, BodyType type, int copies, object userData = null)
+        public static List<Body> EvenlyDistributeShapesAlongPath(World world, Path path, Shape shape, BodyType type, int copies, object userData = null, PhysicsBody physicsBody = null)
         {
             List<Shape> shapes = new List<Shape>(1);
             shapes.Add(shape);
 
-            return EvenlyDistributeShapesAlongPath(world, path, shapes, type, copies, userData);
+            return EvenlyDistributeShapesAlongPath(world, path, shapes, type, copies, userData, physicsBody);
         }
         
         /// <summary>

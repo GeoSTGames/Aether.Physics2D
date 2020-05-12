@@ -12,6 +12,7 @@ using System.Text;
 using tainicom.Aether.Physics2D.Collision;
 using tainicom.Aether.Physics2D.Collision.Shapes;
 using tainicom.Aether.Physics2D.Common;
+using tainicom.Aether.Physics2D.Common.Maths;
 using tainicom.Aether.Physics2D.Controllers;
 using tainicom.Aether.Physics2D.Dynamics;
 using tainicom.Aether.Physics2D.Dynamics.Contacts;
@@ -286,18 +287,7 @@ namespace tainicom.Aether.Physics2D.Diagnostics
 
                 if (AdaptiveLimits)
                 {
-                    var maxTicks = _max.Ticks;
-                    // Round up to the next highest power of 2
-                    {
-                        maxTicks--;
-                        maxTicks |= maxTicks >> 1;
-                        maxTicks |= maxTicks >> 2;
-                        maxTicks |= maxTicks >> 4;
-                        maxTicks |= maxTicks >> 8;
-                        maxTicks |= maxTicks >> 16;
-                        maxTicks++;
-                    }
-                    MaximumValue = TimeSpan.FromTicks(maxTicks);
+                    MaximumValue = _max;
                     MinimumValue = TimeSpan.Zero;
                 }
 
@@ -617,7 +607,7 @@ namespace tainicom.Aether.Physics2D.Diagnostics
                     _primitiveBatch.AddVertex(ref center_vS, colorFill, PrimitiveType.TriangleList);
                     _primitiveBatch.AddVertex(ref center_v1, colorFill, PrimitiveType.TriangleList);
                     _primitiveBatch.AddVertex(ref center_v2, colorFill, PrimitiveType.TriangleList);
-                }
+            }
             }
             // Close Circle
             _primitiveBatch.AddVertex(ref center_v2, color, PrimitiveType.LineList);
