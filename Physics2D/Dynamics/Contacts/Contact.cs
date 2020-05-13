@@ -29,9 +29,9 @@
 
 using System.Collections.Generic;
 using System.Diagnostics;
-using DeeZ.Engine.Common;
-using DeeZ.Engine.Components;
-using DeeZ.Engine.Physics;
+using SE.Common;
+using SE.Components;
+using SE.Physics;
 using tainicom.Aether.Physics2D.Collision;
 using tainicom.Aether.Physics2D.Collision.Shapes;
 using tainicom.Aether.Physics2D.Common;
@@ -121,7 +121,7 @@ namespace tainicom.Aether.Physics2D.Dynamics.Contacts
         public Fixture FixtureA { get; internal set; }
         public Fixture FixtureB { get; internal set; }
 
-        public DeeZ.Engine.Physics.Contact DeeZContact { get; set; }
+        public SE.Physics.Contact DeeZContact { get; set; }
 
         public float Friction { get; set; }
         public float Restitution { get; set; }

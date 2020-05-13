@@ -30,9 +30,9 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using DeeZ.Engine.Common;
-using DeeZ.Engine.Components;
-using DeeZ.Engine.Physics;
+using SE.Common;
+using SE.Components;
+using SE.Physics;
 using tainicom.Aether.Physics2D.Collision;
 using tainicom.Aether.Physics2D.Collision.Shapes;
 using tainicom.Aether.Physics2D.Dynamics.Contacts;
@@ -61,7 +61,7 @@ namespace tainicom.Aether.Physics2D.Dynamics
         public FixtureProxy[] Proxies { get; private set; }
         public int ProxyCount { get; private set; }
 
-        public DeeZ.Engine.Physics.Fixture DeeZFixture { get; set; }
+        public SE.Physics.Fixture DeeZFixture { get; set; }
 
         /// <summary>
         /// Fires after two shapes has collided and are solved. This gives you a chance to get the impact force.

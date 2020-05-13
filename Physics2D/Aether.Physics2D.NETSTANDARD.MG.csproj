@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
@@ -158,11 +158,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Reference Include="DeeZEngine">
-      <HintPath>..\..\MonoGame Projects\DeeZEngine\bin\netstandard2.1\DeeZEngine.dll</HintPath>
-    </Reference>
     <Reference Include="MonoGame.Framework">
-      <HintPath>..\..\MonoGame\MonoGame.Framework\bin\DesktopGL\Release\netstandard2.1\MonoGame.Framework.dll</HintPath>
+      <HintPath>..\..\MonoGame\Artifacts\MonoGame.Framework\DesktopGL\Release\netstandard2.1\MonoGame.Framework.dll</HintPath>
+    </Reference>
+    <Reference Include="SE">
+      <HintPath>..\SE.dll</HintPath>
     </Reference>
   </ItemGroup>
 

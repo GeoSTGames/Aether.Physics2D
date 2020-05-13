@@ -7,7 +7,7 @@
 
 using System;
 using System.Collections.Generic;
-using DeeZ.Engine.Physics;
+using SE.Physics;
 using Microsoft.Xna.Framework;
 using tainicom.Aether.Physics2D.Collision.Shapes;
 using tainicom.Aether.Physics2D.Common;
