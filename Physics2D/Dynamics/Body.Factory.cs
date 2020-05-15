@@ -5,7 +5,6 @@
 
 using System;
 using System.Collections.Generic;
-using SE.Components;
 using tainicom.Aether.Physics2D.Collision.Shapes;
 using tainicom.Aether.Physics2D.Common;
 using tainicom.Aether.Physics2D.Common.Decomposition;

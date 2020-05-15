@@ -30,9 +30,6 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using SE.Common;
-using SE.Components;
-using SE.Physics;
 using tainicom.Aether.Physics2D.Collision;
 using tainicom.Aether.Physics2D.Collision.Shapes;
 using tainicom.Aether.Physics2D.Dynamics.Contacts;
@@ -41,6 +38,14 @@ using Transform = tainicom.Aether.Physics2D.Common.Transform;
 
 namespace tainicom.Aether.Physics2D.Dynamics
 {
+
+    public interface IPhysicsDependencyFixture<T> : IPhysicsDependencyFixture
+    {
+        T GetFixture { get; }
+    }
+
+    public interface IPhysicsDependencyFixture { }
+
     /// <summary>
     /// A fixture is used to attach a Shape to a body for collision detection. A fixture
     /// inherits its transform from its parent. Fixtures hold additional non-geometric data
@@ -61,7 +66,7 @@ namespace tainicom.Aether.Physics2D.Dynamics
         public FixtureProxy[] Proxies { get; private set; }
         public int ProxyCount { get; private set; }
 
-        public SE.Physics.Fixture DeeZFixture { get; set; }
+        public IPhysicsDependencyFixture DependencyFixture { get; set; }
 
         /// <summary>
         /// Fires after two shapes has collided and are solved. This gives you a chance to get the impact force.
@@ -194,11 +199,7 @@ namespace tainicom.Aether.Physics2D.Dynamics
         /// <value>The body.</value>
         public Body Body { get; internal set; }
 
-        public GameObject GameObject => Body.PhysicsBody?.PhysicsObject?.Owner;
-
-        public PhysicsObject PhysicsObject => Body.PhysicsBody?.PhysicsObject;
-
-        public PhysicsBody PhysicsBody => Body.PhysicsBody;
+        public IPhysicsDependencyBody DependencyBody => Body.DependencyBody;
 
         /// <summary>
         /// Set the user data. Use this to store your application specific data.

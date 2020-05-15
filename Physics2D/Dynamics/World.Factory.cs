@@ -7,7 +7,6 @@
 
 using System;
 using System.Collections.Generic;
-using SE.Physics;
 using Microsoft.Xna.Framework;
 using tainicom.Aether.Physics2D.Collision.Shapes;
 using tainicom.Aether.Physics2D.Common;
@@ -18,7 +17,7 @@ namespace tainicom.Aether.Physics2D.Dynamics
 {
     public partial class World
     {
-        public virtual Body CreateBody(Vector2 position = new Vector2(), float rotation = 0, BodyType bodyType = BodyType.Static, PhysicsBody physicsBody = null)
+        public virtual Body CreateBody(Vector2 position = new Vector2(), float rotation = 0, BodyType bodyType = BodyType.Static, IPhysicsDependencyBody physicsBody = null)
         {
             Body body = new Body(physicsBody);
             body.Position = position;
@@ -30,7 +29,7 @@ namespace tainicom.Aether.Physics2D.Dynamics
             return body;
         }
 
-        public Body CreateEdge(Vector2 start, Vector2 end, PhysicsBody physicsBody = null)
+        public Body CreateEdge(Vector2 start, Vector2 end, IPhysicsDependencyBody physicsBody = null)
         {
             Body body = CreateBody(physicsBody: physicsBody);
 
@@ -38,7 +37,7 @@ namespace tainicom.Aether.Physics2D.Dynamics
             return body;
         }
 
-        public Body CreateChainShape(Vertices vertices, Vector2 position = new Vector2(), PhysicsBody physicsBody = null)
+        public Body CreateChainShape(Vertices vertices, Vector2 position = new Vector2(), IPhysicsDependencyBody physicsBody = null)
         {
             Body body = CreateBody(position, physicsBody: physicsBody);
 
@@ -46,7 +45,7 @@ namespace tainicom.Aether.Physics2D.Dynamics
             return body;
         }
 
-        public Body CreateLoopShape(Vertices vertices, Vector2 position = new Vector2(), PhysicsBody physicsBody = null)
+        public Body CreateLoopShape(Vertices vertices, Vector2 position = new Vector2(), IPhysicsDependencyBody physicsBody = null)
         {
             Body body = CreateBody(position, physicsBody: physicsBody);
 
@@ -54,7 +53,7 @@ namespace tainicom.Aether.Physics2D.Dynamics
             return body;
         }
 
-        public Body CreateRectangle(float width, float height, float density, Vector2 position = new Vector2(), float rotation = 0, BodyType bodyType = BodyType.Static, PhysicsBody physicsBody = null)
+        public Body CreateRectangle(float width, float height, float density, Vector2 position = new Vector2(), float rotation = 0, BodyType bodyType = BodyType.Static, IPhysicsDependencyBody physicsBody = null)
         {
             if (width <= 0)
                 throw new ArgumentOutOfRangeException("width", "Width must be more than 0 meters");
@@ -70,28 +69,28 @@ namespace tainicom.Aether.Physics2D.Dynamics
             return body;
         }
 
-        public Body CreateCircle(float radius, float density, Vector2 position = new Vector2(), BodyType bodyType = BodyType.Static, PhysicsBody physicsBody = null)
+        public Body CreateCircle(float radius, float density, Vector2 position = new Vector2(), BodyType bodyType = BodyType.Static, IPhysicsDependencyBody physicsBody = null)
         {
             Body body = CreateBody(position, 0, bodyType, physicsBody);
             body.CreateCircle(radius, density);
             return body;
         }
 
-        public Body CreateEllipse(float xRadius, float yRadius, int edges, float density, Vector2 position = new Vector2(), float rotation = 0, BodyType bodyType = BodyType.Static, PhysicsBody physicsBody = null)
+        public Body CreateEllipse(float xRadius, float yRadius, int edges, float density, Vector2 position = new Vector2(), float rotation = 0, BodyType bodyType = BodyType.Static, IPhysicsDependencyBody physicsBody = null)
         {
             Body body = CreateBody(position, rotation, bodyType, physicsBody);
             body.CreateEllipse(xRadius, yRadius, edges, density);
             return body;
         }
 
-        public Body CreatePolygon(Vertices vertices, float density, Vector2 position = new Vector2(), float rotation = 0, BodyType bodyType = BodyType.Static, PhysicsBody physicsBody = null)
+        public Body CreatePolygon(Vertices vertices, float density, Vector2 position = new Vector2(), float rotation = 0, BodyType bodyType = BodyType.Static, IPhysicsDependencyBody physicsBody = null)
         {
             Body body = CreateBody(position, rotation, bodyType, physicsBody);
             body.CreatePolygon(vertices, density);
             return body;
         }
 
-        public Body CreateCompoundPolygon(List<Vertices> list, float density, Vector2 position = new Vector2(), float rotation = 0, BodyType bodyType = BodyType.Static, PhysicsBody physicsBody = null)
+        public Body CreateCompoundPolygon(List<Vertices> list, float density, Vector2 position = new Vector2(), float rotation = 0, BodyType bodyType = BodyType.Static, IPhysicsDependencyBody physicsBody = null)
         {
             //We create a single body
             Body body = CreateBody(position, rotation, bodyType, physicsBody);
@@ -99,7 +98,7 @@ namespace tainicom.Aether.Physics2D.Dynamics
             return body;
         }
 
-        public Body CreateGear(float radius, int numberOfTeeth, float tipPercentage, float toothHeight, float density, Vector2 position = new Vector2(), float rotation = 0, BodyType bodyType = BodyType.Static, PhysicsBody physicsBody = null)
+        public Body CreateGear(float radius, int numberOfTeeth, float tipPercentage, float toothHeight, float density, Vector2 position = new Vector2(), float rotation = 0, BodyType bodyType = BodyType.Static, IPhysicsDependencyBody physicsBody = null)
         {
             Vertices gearPolygon = PolygonTools.CreateGear(radius, numberOfTeeth, tipPercentage, toothHeight);
 
@@ -115,7 +114,7 @@ namespace tainicom.Aether.Physics2D.Dynamics
             return CreatePolygon(gearPolygon, density, position, rotation, bodyType, physicsBody);
         }
 
-        public Body CreateCapsule(float height, float topRadius, int topEdges, float bottomRadius, int bottomEdges, float density, Vector2 position = new Vector2(), float rotation = 0, BodyType bodyType = BodyType.Static, PhysicsBody physicsBody = null)
+        public Body CreateCapsule(float height, float topRadius, int topEdges, float bottomRadius, int bottomEdges, float density, Vector2 position = new Vector2(), float rotation = 0, BodyType bodyType = BodyType.Static, IPhysicsDependencyBody physicsBody = null)
         {
             Vertices verts = PolygonTools.CreateCapsule(height, topRadius, topEdges, bottomRadius, bottomEdges);
 
@@ -129,7 +128,7 @@ namespace tainicom.Aether.Physics2D.Dynamics
             return CreatePolygon(verts, density, position, rotation, bodyType, physicsBody);
         }
 
-        public Body CreateCapsule(float height, float endRadius, float density, Vector2 position = new Vector2(), float rotation = 0, BodyType bodyType = BodyType.Static, PhysicsBody physicsBody = null)
+        public Body CreateCapsule(float height, float endRadius, float density, Vector2 position = new Vector2(), float rotation = 0, BodyType bodyType = BodyType.Static, IPhysicsDependencyBody physicsBody = null)
         {
             //Create the middle rectangle
             Vertices rectangle = PolygonTools.CreateRectangle(endRadius, height / 2);
@@ -152,7 +151,7 @@ namespace tainicom.Aether.Physics2D.Dynamics
             return body;
         }
 
-        public Body CreateRoundedRectangle(float width, float height, float xRadius, float yRadius, int segments, float density, Vector2 position = new Vector2(), float rotation = 0, BodyType bodyType = BodyType.Static, PhysicsBody physicsBody = null)
+        public Body CreateRoundedRectangle(float width, float height, float xRadius, float yRadius, int segments, float density, Vector2 position = new Vector2(), float rotation = 0, BodyType bodyType = BodyType.Static, IPhysicsDependencyBody physicsBody = null)
         {
             Vertices verts = PolygonTools.CreateRoundedRectangle(width, height, xRadius, yRadius, segments);
 
@@ -166,14 +165,14 @@ namespace tainicom.Aether.Physics2D.Dynamics
             return CreatePolygon(verts, density, position, rotation, bodyType, physicsBody);
         }
 
-        public Body CreateLineArc(float radians, int sides, float radius, bool closed = false, Vector2 position = new Vector2(), float rotation = 0, BodyType bodyType = BodyType.Static, PhysicsBody physicsBody = null)
+        public Body CreateLineArc(float radians, int sides, float radius, bool closed = false, Vector2 position = new Vector2(), float rotation = 0, BodyType bodyType = BodyType.Static, IPhysicsDependencyBody physicsBody = null)
         {
             Body body = CreateBody(position, rotation, bodyType, physicsBody);
             body.CreateLineArc(radians, sides, radius, closed);
             return body;
         }
 
-        public Body CreateSolidArc(float density, float radians, int sides, float radius, Vector2 position = new Vector2(), float rotation = 0, BodyType bodyType = BodyType.Static, PhysicsBody physicsBody = null)
+        public Body CreateSolidArc(float density, float radians, int sides, float radius, Vector2 position = new Vector2(), float rotation = 0, BodyType bodyType = BodyType.Static, IPhysicsDependencyBody physicsBody = null)
         {
             Body body = CreateBody(position, rotation, bodyType, physicsBody);
             body.CreateSolidArc(density, radians, sides, radius);
@@ -193,7 +192,7 @@ namespace tainicom.Aether.Physics2D.Dynamics
         /// <param name="linkDensity">The link density.</param>
         /// <param name="attachRopeJoint">Creates a rope joint between start and end. This enforces the length of the rope. Said in another way: it makes the rope less bouncy.</param>
         /// <returns></returns>
-        public Path CreateChain(Vector2 start, Vector2 end, float linkWidth, float linkHeight, int numberOfLinks, float linkDensity, bool attachRopeJoint, PhysicsBody physicsBody = null)
+        public Path CreateChain(Vector2 start, Vector2 end, float linkWidth, float linkHeight, int numberOfLinks, float linkDensity, bool attachRopeJoint, IPhysicsDependencyBody physicsBody = null)
         {
             System.Diagnostics.Debug.Assert(numberOfLinks >= 2);
 

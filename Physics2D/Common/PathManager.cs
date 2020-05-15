@@ -5,8 +5,6 @@
 
 using System;
 using System.Collections.Generic;
-using SE.Common;
-using SE.Physics;
 using tainicom.Aether.Physics2D.Collision.Shapes;
 using tainicom.Aether.Physics2D.Common.Decomposition;
 using tainicom.Aether.Physics2D.Dynamics;
@@ -91,7 +89,7 @@ namespace tainicom.Aether.Physics2D.Common
         /// <param name="copies">The copies.</param>
         /// <param name="userData"></param>
         /// <returns></returns>
-        public static List<Body> EvenlyDistributeShapesAlongPath(World world, Path path, IEnumerable<Shape> shapes, BodyType type, int copies, object userData = null, PhysicsBody physicsBody = null)
+        public static List<Body> EvenlyDistributeShapesAlongPath(World world, Path path, IEnumerable<Shape> shapes, BodyType type, int copies, object userData = null, IPhysicsDependencyBody physicsBody = null)
         {
             List<Vector3> centers = path.SubdivideEvenly(copies);
             List<Body> bodyList = new List<Body>();
@@ -128,7 +126,7 @@ namespace tainicom.Aether.Physics2D.Common
         /// <param name="copies">The copies.</param>
         /// <param name="userData">The user data.</param>
         /// <returns></returns>
-        public static List<Body> EvenlyDistributeShapesAlongPath(World world, Path path, Shape shape, BodyType type, int copies, object userData = null, PhysicsBody physicsBody = null)
+        public static List<Body> EvenlyDistributeShapesAlongPath(World world, Path path, Shape shape, BodyType type, int copies, object userData = null, IPhysicsDependencyBody physicsBody = null)
         {
             List<Shape> shapes = new List<Shape>(1);
             shapes.Add(shape);

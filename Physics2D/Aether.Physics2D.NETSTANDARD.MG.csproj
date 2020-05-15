@@ -161,9 +161,6 @@
     <Reference Include="MonoGame.Framework">
       <HintPath>..\..\MonoGame\Artifacts\MonoGame.Framework\DesktopGL\Release\netstandard2.1\MonoGame.Framework.dll</HintPath>
     </Reference>
-    <Reference Include="SE">
-      <HintPath>..\SE.dll</HintPath>
-    </Reference>
   </ItemGroup>
 
 </Project>

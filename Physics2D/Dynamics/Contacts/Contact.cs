@@ -29,9 +29,6 @@
 
 using System.Collections.Generic;
 using System.Diagnostics;
-using SE.Common;
-using SE.Components;
-using SE.Physics;
 using tainicom.Aether.Physics2D.Collision;
 using tainicom.Aether.Physics2D.Collision.Shapes;
 using tainicom.Aether.Physics2D.Common;
@@ -40,6 +37,14 @@ using Transform = tainicom.Aether.Physics2D.Common.Transform;
 
 namespace tainicom.Aether.Physics2D.Dynamics.Contacts
 {
+
+    public interface IPhysicsDependencyContact<T> : IPhysicsDependencyContact
+    {
+        T GetFixture { get; }
+    }
+
+    public interface IPhysicsDependencyContact { }
+
     /// <summary>
     /// A contact edge is used to connect bodies and contacts together
     /// in a contact graph where each body is a node and each contact
@@ -121,7 +126,7 @@ namespace tainicom.Aether.Physics2D.Dynamics.Contacts
         public Fixture FixtureA { get; internal set; }
         public Fixture FixtureB { get; internal set; }
 
-        public SE.Physics.Contact DeeZContact { get; set; }
+        public IPhysicsDependencyContact DependencyContact { get; set; }
 
         public float Friction { get; set; }
         public float Restitution { get; set; }

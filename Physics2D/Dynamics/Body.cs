@@ -31,9 +31,6 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using SE.Common;
-using SE.Components;
-using SE.Physics;
 using tainicom.Aether.Physics2D.Collision;
 using tainicom.Aether.Physics2D.Collision.Shapes;
 using tainicom.Aether.Physics2D.Common;
@@ -47,6 +44,13 @@ using Transform = tainicom.Aether.Physics2D.Common.Transform;
 
 namespace tainicom.Aether.Physics2D.Dynamics
 {
+    public interface IPhysicsDependencyBody<T> : IPhysicsDependencyBody
+    {
+        T GetBody { get; }
+    }
+
+    public interface IPhysicsDependencyBody { }
+
     public partial class Body
     {
         private float _angularDamping;
@@ -75,9 +79,9 @@ namespace tainicom.Aether.Physics2D.Dynamics
 
         public ControllerFilter ControllerFilter = new ControllerFilter(ControllerCategory.All);
 
-        public Body(PhysicsBody physicsBody = null)
+        public Body(IPhysicsDependencyBody dependencyBody = null)
         {
-            PhysicsBody = physicsBody;
+            DependencyBody = dependencyBody;
             FixtureList = new List<Fixture>();
 
             _enabled = true;
@@ -88,11 +92,7 @@ namespace tainicom.Aether.Physics2D.Dynamics
             BodyType = BodyType.Static;
         }
 
-        public PhysicsBody PhysicsBody { get; set; }
-
-        public PhysicsObject PhysicsObject => PhysicsBody?.PhysicsObject;
-
-        public GameObject GameObject => PhysicsBody?.PhysicsObject?.Owner;
+        public IPhysicsDependencyBody DependencyBody { get; set; }
 
         public World World { get {return _world; } }
         
