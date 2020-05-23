@@ -7,6 +7,7 @@
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
     <AssemblyName>Aether.Physics2D.NETSTANDARD.MG</AssemblyName>
     <RootNamespace>Aether.Physics2D.NETSTANDARD.MG</RootNamespace>
+    <Platforms>AnyCPU;x64</Platforms>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -15,7 +16,19 @@
     <OutputPath>..\bin\Debug\netstandard2.1\</OutputPath>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <DefineConstants>DEBUG;TRACE;NETSTANDARD;NETSTANDARD2_0</DefineConstants>
+    <OutputPath>..\bin\Debug\netstandard2.1\</OutputPath>
+  </PropertyGroup>
+
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <DefineConstants>TRACE;NETSTANDARD;NETSTANDARD2_0</DefineConstants>
+    <OutputPath>..\bin\Release\netstandard2.1\</OutputPath>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <DefineConstants>TRACE;NETSTANDARD;NETSTANDARD2_0</DefineConstants>
     <OutputPath>..\bin\Release\netstandard2.1\</OutputPath>
